@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+
+/* ===================
+   전체 레이아웃 및 기본 스타일
+   =================== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: darkgray; /* 지도 대신 회색으로 설정 */
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.panel {
+  width: 33vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox 스크롤바 숨김 */
+  -ms-overflow-style: none; /* IE 및 Edge 스크롤바 숨김 */
+}
+
+.panel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera 스크롤바 숨김 */
+}
+
+/* 로고 (상단) */
+.logo {
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-size: 30px;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
+/* ===================
+  맞춤 드롭다운(SelectBox)
+   =================== */
+.dropbox-container {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 드롭다운 컨테이너 */
+.custom-select {
+  position: relative;
+  min-width: 90px;
+  flex: 1;
+}
+
+/* 드롭다운에서 선택된 값(버튼 부분) */
+.custom-select__selected {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px; /* 오른쪽 chevron 공간 확보 */
+  background: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* 버튼 내부 텍스트 span (길어지면 ... 처리) */
+.custom-select__selected-text {
+  flex: 1 1 0%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  margin-right: 8px;
+}
+
+/* 드롭다운 옵션 목록 */
+.custom-select__options {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 104%;
+  z-index: 100;
+  background: #f2f2f2;
+  border-radius: 7px;
+  min-width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* 드롭다운 활성화 시 옵션 보이기 */
+.custom-select.active .custom-select__options {
+  display: block;
+  animation: fadeIn 0.18s;
+}
+
+/* 드롭다운 열릴 때 페이드 효과 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 옵션(항목) 스타일 */
+.custom-select__options li {
+  padding: 13px 28px 13px 19px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  user-select: none;
+}
+
+/* 옵션에 마우스 올릴 때 */
+.custom-select__options li:hover {
+  background: #f2f2f2;
+}
+
+/* ===================
+   출발지/도착지 입력 구역
+   =================== */
+.input-container {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.icon-bg {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.input-field {
+  position: relative;
+  flex: 1;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.input-field .fa-magnifying-glass {
+  position: absolute;
+  left: 20px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 20px 50px;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+}
+
+.input-field input::placeholder {
+  color: #000;
+}
+
+.icon-group {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon-group i:not(.icon-disabled):hover {
+  cursor: pointer;
+}
+
+.icon-disabled {
+  color: #c6c6c6;
+}
+
+.submit-container {
+  text-align: center;
+  margin-top: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+#submit-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit-btn:hover {
+  background-color: #333;
+}
+
+/* ===================
+   구분선 및 + 버튼
+   =================== */
+.divider-container {
+  position: relative;
+  margin-bottom: 30px;
+  width: calc(100% + 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plus-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-23px);
+  width: 46px;
+  height: 46px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  position: relative;
+  z-index: 1;
+}
+
+#map {
+  flex: 1;
+  height: 100vh;
+}

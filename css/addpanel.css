@@ -1,0 +1,74 @@
+.input-field {
+  position: relative;
+  background-color: transparent;
+  border: none;
+}
+
+.input-row {
+  margin-bottom: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+.input-container {
+  overflow: visible !important;
+  margin-bottom: 0;
+}
+
+/* 검색 결과 리스트 박스 */
+.result-box {
+  display: none; /* 기본 숨김 */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 2px;
+  padding: 8px 12px;
+  max-height: 200px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 엔터 누르고 보여지도록 토글용 */
+.result-box.show {
+  display: block;
+}
+
+.result-box::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+.result-box::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.result-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.result-box div {
+  padding: 6px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.result-box div:hover {
+  background-color: #f0f0f0;
+}

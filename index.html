@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="fontawesome-free-6.7.2-web/css/all.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+    <link rel="stylesheet" href="css/route.css" />
+    <link rel="stylesheet" href="css/addpanel.css" />
+    <link rel="stylesheet" href="css/placeDetail.css" />
+    <title>DDARAGAJO</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="panel">
+        <a href="index.html" class="logo">DDARAGAJO</a>
+
+        <div class="dropbox-container">
+          <div class="custom-select" data-type="경사로">
+            <button type="button" class="custom-select__selected">
+              <span class="custom-select__selected-text">경사로</span>
+              <i
+                class="fa-solid fa-chevron-down fa-sm custom-select__chevron"
+              ></i>
+            </button>
+            <ul class="custom-select__options">
+              <li>없음</li>
+              <li>있음</li>
+            </ul>
+          </div>
+          <div class="custom-select" data-type="엘리베이터">
+            <button type="button" class="custom-select__selected">
+              <span class="custom-select__selected-text">엘리베이터</span>
+              <i
+                class="fa-solid fa-chevron-down fa-sm custom-select__chevron"
+              ></i>
+            </button>
+            <ul class="custom-select__options">
+              <li>없음</li>
+              <li>있음</li>
+            </ul>
+          </div>
+          <div class="custom-select" data-type="혼잡도">
+            <button type="button" class="custom-select__selected">
+              <span class="custom-select__selected-text">혼잡도</span>
+              <i
+                class="fa-solid fa-chevron-down fa-sm custom-select__chevron"
+              ></i>
+            </button>
+            <ul class="custom-select__options">
+              <li>없음</li>
+              <li>있음</li>
+            </ul>
+          </div>
+        </div>
+        <div class="input-container">
+          <div class="input-row">
+            <div class="icon-bg">
+              <div class="dot-icon"></div>
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+              <!--  검색 결과 id -->
+              <input
+                id="departure-input"
+                type="text"
+                placeholder="출발지 입력"
+              />
+              <div id="departure-result" class="result-box"></div>
+              <div class="icon-group">
+                <i class="fa-solid fa-arrow-down"></i>
+                <i class="fa-solid fa-arrow-up icon-disabled"></i>
+                <i class="fa-solid fa-eraser icon-disabled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="icon-bg">
+              <i class="fa-solid fa-location-dot fa-lg"></i>
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+              <input id="arrival-input" type="text" placeholder="도착지 입력" />
+              <div id="arrival-result" class="result-box"></div>
+              <div class="icon-group">
+                <i class="fa-solid fa-arrow-down icon-disabled"></i>
+                <i class="fa-solid fa-arrow-up"></i>
+                <i class="fa-solid fa-eraser icon-disabled"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-container">
+          <button id="submit-btn">경로 탐색</button>
+        </div>
+
+        <div class="divider-container">
+          <div class="divider"></div>
+          <button class="plus-btn">
+            <i class="fa-solid fa-plus fa-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 팝업 오버레이 구조 -->
+      <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-box">
+          <div class="popup-header">
+            <div class="left">
+              <div class="recommend-label">추천</div>
+              <div class="popup-time"></div>
+            </div>
+            <i id="closePopupBtn" class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="popup-info"></div>
+          <div class="popup-steps">
+            <div class="step-line"></div>
+            <ul class="popup-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </div>
+
+    <script src="js/dropbox.js"></script>
+    <script src="js/waypoint.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/route.js"></script>
+
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=51b74a47a7d8b1df8e7c5a079bc79239&libraries=services&autoload=false"></script>
+
+    <script src="js/map.js"></script>
+    <script src="js/placeDetail.js"></script>
+  </body>
+</html>

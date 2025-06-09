@@ -1,0 +1,189 @@
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.popup-box {
+  width: 440px;
+  min-height: 640px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+  position: absolute;
+  top:100px;
+  left:560px;
+  overflow-y: auto;
+  cursor: grab;
+  pointer-events: auto;
+}
+
+.popup-box.dragging {
+  cursor: grabbing;
+  pointer-events: none;
+}
+
+/* 헤더 (추천 + 시간 + 닫기 버튼) */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.popup-header .left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recommend-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.popup-time {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
+
+#closePopupBtn {
+  font-size: 18px;
+  cursor: pointer;
+  color: #999;
+}
+#closePopupBtn:hover {
+  color: #000;
+}
+
+/* 해시태그 */
+.popup-info {
+  margin-bottom: 12px;
+}
+.popup-info span {
+  background-color: #eee;
+  color: #333;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+/* 단계 표시 (원 + 선) */
+.popup-steps {
+  margin-top: 60px;
+}
+
+.step-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  position: relative;     
+  z-index: 1;
+}
+
+.step {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;         
+  z-index: 4;
+}
+
+.step.active {
+  background-color: #007bff;
+}
+
+.progress {
+  height: 6px;
+  background-color: #e0e0e0;
+  flex-grow: 1;
+  border-radius: 4px;
+  margin: 0 -3px;             
+  position: relative;
+  top: -1px;                 
+  z-index: 1;
+}
+
+.progress.active {
+  background-color: #007bff;
+}
+
+/* 리스트 항목 (화살표 아이콘 + 설명) */
+.popup-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.popup-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-list li:last-child {
+  border-bottom: none;
+}
+
+.popup-list li i {
+  font-size: 12px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.popup-list li strong {
+  font-weight: bold;
+}
+
+/* dot-wrapper 안에 라벨 추가 */
+.step-line .dot-wrapper {
+  position: absolute;
+  transform: translateX(-50%);
+  top: -10px;
+  z-index: 3;
+}
+
+.step-line .dot-label {
+  position: absolute;
+  top: -25px;
+  transform: translateX(-30%);
+  max-width: 60px;
+  padding: 2px 8px;
+  background-color: #eee;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

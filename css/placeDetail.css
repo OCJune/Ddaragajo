@@ -1,0 +1,59 @@
+.place-detail-card {
+  margin: 16px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  overflow: hidden;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.place-detail-card img.place-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.place-detail-card .place-info {
+  padding: 16px 20px 12px;
+  text-align: left;
+}
+
+.place-detail-card .place-info strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.place-detail-card .button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.place-detail-card .button-group button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 24px;
+  background-color: #f4f4f4;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.place-detail-card .button-group button:hover {
+  background-color: #e0e0e0;
+}
+
+.place-detail-card .button-group .end-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.place-detail-card .button-group .end-btn:hover {
+  background-color: #222;
+}
