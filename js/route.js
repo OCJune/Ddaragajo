@@ -60,9 +60,10 @@ function renderRouteCardsFromAPI(data) {
     if (isPlace) {
       dotContent = `<div class="dot bold">${labelNumber++}</div>`;
     } else {
-      const icon = step.type === "SUBWAY_STATION"
-        ? '<i class="fa-solid fa-train-subway"></i>'
-        : '<i class="fa-solid fa-bus"></i>';
+      const icon =
+        step.type === "SUBWAY_STATION"
+          ? '<i class="fa-solid fa-train-subway"></i>'
+          : '<i class="fa-solid fa-bus"></i>';
       dotContent = `<div class="dot transport">${icon}</div>`;
     }
 
@@ -73,7 +74,9 @@ function renderRouteCardsFromAPI(data) {
     `;
 
     labelHtml += `
-      <div class="dot-label" style="left: ${leftPercent}%; transform: translateX(-50%); font-weight: ${isPlace ? "bold" : "normal"};">
+      <div class="dot-label" style="left: ${leftPercent}%; transform: translateX(-50%); font-weight: ${
+      isPlace ? "bold" : "normal"
+    };">
         ${step.name}
       </div>
     `;
@@ -108,8 +111,6 @@ function renderRouteCardsFromAPI(data) {
 
   panel.appendChild(card);
 }
-
-
 
 // API 요청 함수
 async function requestRouteAPI({
@@ -213,10 +214,9 @@ function getConditionBool(type) {
   );
   if (!el) return false;
   const val = el.textContent.trim();
-  if (type === "계단") return val === "없음" || val === "없으면 불편함";
-  if (type === "엘리베이터") return val === "있음" || val === "있으면 좋음";
-  if (type === "경사로") return val === "있음" || val === "있으면 좋음";
-  if (type === "혼잡도") return val === "없음" || val === "없으면 불편함";
+  if (type === "엘리베이터") return val === "있음";
+  if (type === "경사로") return val === "있음";
+  if (type === "혼잡도") return val === "없음";
   return false;
 }
 
@@ -235,7 +235,6 @@ async function fetchRouteFromAPI() {
   const userCondition = {
     avoidCongestion: getConditionBool("혼잡도"),
     requireElevator: getConditionBool("엘리베이터"),
-    avoidStairs: getConditionBool("계단"),
   };
 
   const data = await requestRouteAPI({
